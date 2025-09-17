@@ -1,0 +1,13 @@
+{
+    "name": "vitest-environment-prisma",
+  "version": "1.0.0",
+  "main": "./prisma-test-environment.ts",  
+  "types": "./prisma-test-environment.ts", 
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["vitest", "environment", "prisma", "testing"],
+  "author": "",
+  "license": "ISC"
+}

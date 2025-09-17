@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    /* Diretórios */
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* Configuração de ambiente */
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Flags de compatibilidade */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Saída */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* Regras mais estritas */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "allowImportingTsExtensions": false,
+
+    /* Estilo */
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    /* Outros */
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
