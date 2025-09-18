@@ -7,6 +7,17 @@ jobs:
     name: Run Unit Tests
     runs-on: ubuntu-latest
 
+    services:
+      api-solid-pg:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        environment:
+          - POSTGRESQL_USERNAME=docker
+          - POSTGRESQL_PASSWORD=docker
+          - POSTGRESQL_DATABASE=apisolid
+
+
     steps:
       - uses: actions/checkout@v3
 
@@ -17,4 +28,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run test
+      - run: npm run test:e2e
+        env:
+          JWT_SECRET: testing
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/apisolid?schema=public"
