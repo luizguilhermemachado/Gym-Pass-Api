@@ -9,14 +9,18 @@ jobs:
 
     services:
       api-solid-pg:
-        image: bitnami/postgresql:16
+        image: postgres:15
         ports:
           - 5432:5432
         env:
-          POSTGRESQL_USERNAME: docker
-          POSTGRESQL_PASSWORD: docker
-          POSTGRESQL_DATABASE: apisolid
-
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker 
+          POSTGRES_DB: apisolid
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +31,24 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
+
+      - name: Run Prisma migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/apisolid?schema=public"
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..10}; do
+            if nc -z localhost 5432; then
+              echo "PostgreSQL is ready!"
+              exit 0
+            fi
+            echo "Waiting for PostgreSQL... Attempt $i"
+            sleep 3
+          done
+          echo "PostgreSQL failed to start"
+          exit 1
 
       - run: npm run test:e2e
         env:
