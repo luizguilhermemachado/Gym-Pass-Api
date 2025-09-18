@@ -5,7 +5,6 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     globals: true,
-    environment:
-      './prisma/vitest-environment-prisma/prisma-test-environment.ts',
+    environment: 'node',
   },
 })

@@ -1,7 +1,7 @@
 
 services:
   api-solid-pg:
-    image: bitnami/postgresql
+    image: bitnami/postgresql:15.2.0
     ports:
       - 5432:5432
     environment:
