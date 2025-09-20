@@ -1,4 +1,4 @@
-# 🏋️‍♂️ GymPass API (api-solids)
+# 🏋️‍♂️ GymPass API
 
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green?style=for-the-badge&logo=node.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)
@@ -203,3 +203,4 @@ Se você encontrar algum problema ou tiver dúvidas:
 ---
 
 **Nota:** Certifique-se de configurar corretamente as variáveis de ambiente e executar as migrations antes de iniciar o servidor.
+
